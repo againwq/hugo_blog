@@ -27,13 +27,14 @@ languages:
         homeInfoParams:
           enabled: true
           Title: "Again's Blog"
-          Content: "Welcome to my blog"
+          Content: "Building Site ..."
         aboutPage:
           enabled: true
           title: Again's Blog
           imageUrl: "images/avatar.png"  
           imageTitle: my image
-          subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
+          #subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
+          subtitle: Building Site ...
         # imageWidth: 120
         # imageHeight: 120
         #  buttons:
@@ -109,8 +110,6 @@ languages:
  #                 url: https://github.com/adityatelange/hugo-PaperMod/wiki/
   #              - name: Discord
    #              url: https://discord.gg/ahpmTvhVmp
- 
-  ##          subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
   
 
 outputs:
@@ -123,7 +122,7 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     author: Theme PaperMod
-    # author: ["Me", "You"] # multiple authors
+    author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
     # disableThemeToggle: true
@@ -139,8 +138,8 @@ params:
     DateFormat: "2006-01-02"  # 日期格式化
     #ShowFullTextinRSS: true   # RSS 输出全文
     # tag 评论功能
-    comments: true
-    images: ["images/papermod-cover.png"]
+    #comments: true
+    #images: ["images/papermod-cover.png"]
 
     
     socialIcons:
@@ -156,10 +155,10 @@ params:
     #    Text: "Suggest Changes" # edit text
     #    appendFilePath: true # to append file path to Edit link
 
-    # label:
-    #     text: "Home"
-    #     icon: icon.png
-    #     iconHeight: 35
+    label:
+        text: "Again's Blog"
+        icon: /images/avatar.png
+        iconHeight: 35
 
     # analytics:
     #     google:
