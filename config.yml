@@ -123,9 +123,14 @@ params:
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     author: Theme PaperMod
     #author: ["Me", "You"] # multiple authors
-    #tag custom
-    custom_css: ["css/custom.css"]
-    custom_js: ["js/custom.js"]
+    # tag custom static
+    #custom_js: ["js/custom.js"]
+    
+    #tag custom assets
+    customJs_param:
+      name: test
+      domain: againdev.top
+
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: false
@@ -139,7 +144,7 @@ params:
     ShowToc: true
     DateFormat: "2006-01-02"  # 日期格式化
     #ShowFullTextinRSS: true   # RSS 输出全文
-    # tag 评论功能
+    # todo 评论功能
     #comments: true
     #images: ["images/papermod-cover.png"]
 

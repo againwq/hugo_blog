@@ -2,11 +2,17 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 
-{{ range .Site.Params.custom_css -}}
-    <link rel="stylesheet" href="{{ . | absURL }}">
-{{- end }}
-
+<!--tag custom js(static) -->
+<!--
 {{ range .Site.Params.custom_js -}}
     <script type="text/javascript" src="{{ . | absURL }}"></script>
-{{- end }}
+{{- end }} -->
+
+
+<!--tag custom js(assets) -->
+{{- $main := resources.Get "js/extended/main.js" | js.Build (dict "params" (dict "custom_param" site.Params.customJs_param)) | resources.Minify }}
+{{- $module := resources.Get "js/extended/module.js" }}
+{{- $custom := (slice $main $module) | resources.Concat "assets/js/extended/custom.js" }}
+<script defer crossorigin="anonymous" src="{{ $custom.RelPermalink }}"></script>
+
 {{- /* Head custom content area end */ -}}
