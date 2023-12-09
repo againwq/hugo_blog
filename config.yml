@@ -122,11 +122,10 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     author: Theme PaperMod
-    author: ["Me", "You"] # multiple authors
-    customcss:
-      - "css/custom.css"
-    customjs:
-      - "js/test.js"
+    #author: ["Me", "You"] # multiple authors
+    #tag custom
+    custom_css: ["css/custom.css"]
+    custom_js: ["js/custom.js"]
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: false
