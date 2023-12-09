@@ -123,7 +123,10 @@ params:
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     author: Theme PaperMod
     author: ["Me", "You"] # multiple authors
-
+    customcss:
+      - "css/custom.css"
+    customjs:
+      - "js/test.js"
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: false
