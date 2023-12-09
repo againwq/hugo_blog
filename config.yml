@@ -55,15 +55,16 @@ languages:
                 - name: Archives
                   url: /archives/
                   weight: 3
+                - name: Series
+                  url: /posts/
+                  weight: 4
                 - name: Search
                   url: /search/
-                  weight: 4
+                  weight: 5
                 - name: Tags
                   url: /tags/
-                  weight: 5
-                - name: Github
-                  url: https://github.com/againwq
-                  weight: 20
+                  weight: 6
+                
    # en:
    #     languageName: "English"
    #     weight: 2
@@ -121,8 +122,8 @@ outputs:
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
-    author: Theme PaperMod
-    #author: ["Me", "You"] # multiple authors
+    #author: Theme PaperMod
+    author: Again # multiple authors
     # tag custom static
     #custom_js: ["js/custom.js"]
     
@@ -134,7 +135,8 @@ params:
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: false
-    ShowReadingTime: true
+    # tag 显示上次阅读时间
+    #ShowReadingTime: true
     # disableSpecial1stPost: true
     displayFullLangName: true
     ShowPostNavLinks: true

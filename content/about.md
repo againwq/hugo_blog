@@ -1,6 +1,6 @@
 ---
 title: "About"
-layout: "about"
+layout: "about" # 对应about.html
 url: "/about"
-type: section
+# type:section 
 ---
