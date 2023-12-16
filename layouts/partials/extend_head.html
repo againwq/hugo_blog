@@ -8,7 +8,7 @@
     <script type="text/javascript" src="{{ . | absURL }}"></script>
 {{- end }} -->
 
-
+<link rel="icon" href="/avatar.png">
 <!--tag custom js(assets) -->
 {{- $main := resources.Get "js/extended/main.js" | js.Build (dict "params" (dict "custom_param" site.Params.customJs_param)) | resources.Minify }}
 {{- $module := resources.Get "js/extended/module.js" }}
