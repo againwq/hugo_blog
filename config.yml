@@ -147,7 +147,7 @@ params:
     DateFormat: "2006-01-02"  # 日期格式化
     #ShowFullTextinRSS: true   # RSS 输出全文
     # todo 评论功能
-    comments: true
+    comments: false
     #images: ["images/papermod-cover.png"]
 
     
