@@ -1,5 +1,5 @@
 baseURL: "https://againwq.github.io" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-title: Again's Blog
+title: 徐乾朝的博客
 paginate: 5
 theme: PaperMod
 
@@ -26,11 +26,11 @@ languages:
           series: series
         homeInfoParams:
           enabled: true
-          Title: "Again's Blog"
+          Title: 徐乾朝的博客
           Content: "Building Site ..."
         aboutPage:
           enabled: true
-          title: Again's Blog
+          title: 徐乾朝的博客
           imageUrl: "images/avatar.png"  
           imageTitle: my image
           #subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
@@ -123,14 +123,14 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     #author: Theme PaperMod
-    author: Again # multiple authors
+    author: 徐乾朝 # multiple authors
     # tag custom static
     #custom_js: ["js/custom.js"]
     
     #tag custom assets
     customJs_param:
       name: test
-      domain: againdev.top
+      domain: againwq.github.io
 
     defaultTheme: auto
     # disableThemeToggle: true
