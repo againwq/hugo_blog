@@ -1,6 +1,24 @@
 {{- /* Comments area start */ -}}
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
-<div id="comment"></div>
-{{- $comment := resources.Get "js/extended/comment.js" }}
-<script defer crossorigin="anonymous" src="{{ $comment.RelPermalink }}"></script>
+<!-- valine -->
+
+<!-- id 将作为查询条件 -->
+
+
+<div id="vcomments"></div>
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments',
+        appId: '{{ .Site.Params.valine.appId }}',
+        appKey: '{{ .Site.Params.valine.appKey }}',
+        avatar: '{{ .Site.Params.valine.avatar }}',
+        placeholder: '{{ .Site.Params.valine.placeholder }}',
+        visitor: '{{ .Site.Params.valine.visitor }}',
+        avatar_cdn: '{{ .Site.Params.valine.avatar_cdn }}',
+    });
+</script>
+
 {{- /* Comments area end */ -}}

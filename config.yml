@@ -147,7 +147,20 @@ params:
     DateFormat: "2006-01-02"  # 日期格式化
     #ShowFullTextinRSS: true   # RSS 输出全文
     # todo 评论功能
-    comments: false
+    comments: true
+    valine:
+        appId: "mIHTzu4xPiVECrYmBvLyLJob-gzGzoHsz"
+        appKey: "NwaBNu8gh1X350R6NEsJrLMT"
+        avatar: "retro"
+        placeholder: "说点什么吧..."
+        visitor: true
+        avatar_cdn: 'https://cravatar.cn/avatar/'
+        #pageSize: 10
+        #enableQQ: true
+        #requiredFields: ['nick', 'mail']
+        #lang: 'en'
+        #recordIP: true
+        #serverURLs: 'https://your_server_url'
     #images: ["images/papermod-cover.png"]
 
     
@@ -156,6 +169,8 @@ params:
           url: "https://github.com/againwq"
        # - name: KoFi
        #   url: "https://ko-fi.com/adityatelange"
+        - name: email
+          url: "mailto:2750833015@qq.com"
         - name: Rss
           url: "index.xml"
     # tag 编辑文章
@@ -165,7 +180,7 @@ params:
     #    appendFilePath: true # to append file path to Edit link
 
     label:
-        text: "Again's Blog"
+        text: "徐乾朝的博客"
         icon: /images/avatar.png
         iconHeight: 35
 

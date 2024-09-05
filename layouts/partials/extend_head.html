@@ -14,5 +14,4 @@
 {{- $module := resources.Get "js/extended/module.js" }}
 {{- $custom := (slice $main $module) | resources.Concat "assets/js/extended/custom.js" }}
 <script defer crossorigin="anonymous" src="{{ $custom.RelPermalink }}"></script>
-
 {{- /* Head custom content area end */ -}}
