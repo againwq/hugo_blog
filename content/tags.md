@@ -1,4 +1,4 @@
 ---
-title: "分类"
+title: "标签"
 layout: "terms"
 ---

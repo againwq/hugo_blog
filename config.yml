@@ -55,13 +55,13 @@ languages:
                 - name: 归档
                   url: /archives/
                   weight: 3
-                - name: 文章
+                - name: 系列
                   url: /posts/
                   weight: 4
                 - name: 搜索
                   url: /search/
                   weight: 5
-                - name: 分类
+                - name: 标签
                   url: /tags/
                   weight: 6
 
@@ -77,6 +77,7 @@ params:
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     #author: Theme PaperMod
     author: 徐乾朝 # multiple authors
+    hideAuthor: true
     # tag custom static
     #custom_js: ["js/custom.js"]
     
@@ -89,7 +90,8 @@ params:
     # disableThemeToggle: true
     ShowShareButtons: false
     # tag 显示上次阅读时间
-    #ShowReadingTime: true
+    ShowReadingTime: true
+    ShowWordCount: true
     # disableSpecial1stPost: true
     displayFullLangName: true
     ShowPostNavLinks: true
@@ -98,7 +100,7 @@ params:
     ShowRssButtonInSectionTermList: true
     ShowToc: true
     DateFormat: "2006-01-02"  # 日期格式化
-    #ShowFullTextinRSS: true   # RSS 输出全文
+    ShowFullTextinRSS: true   # RSS 输出全文
     # 评论功能
     comments: true
     valine:
