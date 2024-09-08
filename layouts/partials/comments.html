@@ -5,18 +5,15 @@
 <div id="vcomments"></div>
 
 <script type="text/javascript">
-    let el = document.getElementsByClassName('leancloud_visitors');
-    if(el){
-        for(let i = 0; i < el.length; i++){
-            let id = el[i].getAttribute('id');
-            id = id.replace(".md", "/").toLowerCase()
-            el[i].setAttribute('id', id);
-        }
-    }
+    let meta = document.getElementsByClassName('post-meta')[0];
+    let id = window.location.pathname;
+    let title = document.title.split(' | ')[0];
+    meta.innerHTML += `<span id="${id}" class="leancloud_visitors" data-flag-title="${title}">
+        <em class="post-meta-item-text">&nbsp;·&nbsp;阅读量 </em>
+        <i class="leancloud-visitors-count"></i>`;
+    
 </script>
-
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
 <script type="text/javascript">
     new Valine({
         el: '#vcomments',
@@ -25,8 +22,25 @@
         avatar: '{{ .Site.Params.valine.avatar }}',
         placeholder: '{{ .Site.Params.valine.placeholder }}',
         visitor: '{{ .Site.Params.valine.visitor }}',
-        avatar_cdn: '{{ .Site.Params.valine.avatar_cdn }}',
+        avatar_cdn: '{{ .Site.Params.valine.avatar_cdn }}'
     });
+
+    let comments = document.getElementById('vcomments');
+    comments.addEventListener("click", (e) => {      // 验证昵称和邮箱格式
+        if(e.target.classList.contains('vsubmit')){
+            const nick = document.querySelector("input[name='nick']").value;
+            const mail = document.querySelector("input[type='email']").value;
+            const reg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+            if(nick.length < 3){
+                alert('昵称长度不得小于3');
+                e.stopPropagation();
+            }
+            if(!reg.test(mail)){
+                alert('邮箱格式不正确');
+                e.stopPropagation();
+            }
+        }
+    }, true);
 </script>
 
 {{- /* Comments area end */ -}}
