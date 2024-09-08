@@ -12,7 +12,6 @@
 {{- $scratch.Add "meta" (slice (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
 {{- end }}
 
-
 {{- if not (.Param "hideAuthor") -}}
 {{- with (partial "author.html" .) }}
 {{- $scratch.Add "meta" (slice .) }}
@@ -23,3 +22,12 @@
 {{- with ($scratch.Get "meta") }}
 {{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
 {{- end -}}
+
+
+
+<span id="/{{ .Path }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
+    <em class="post-meta-item-text">&nbsp;·&nbsp;阅读量 </em>
+    <i class="leancloud-visitors-count"></i>
+</span>
+
+

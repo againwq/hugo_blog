@@ -2,13 +2,18 @@
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 <!-- valine -->
 
-<!-- id 将作为查询条件 -->
-
-<span id="/{{ .Path }}/index.html" class="leancloud_visitors" data-flag-title="{{ .Title }}"></span>
-<span class="post-meta-item-text">文章阅读量 </span>
-<span class="leancloud-visitors-count">0</span>
-</span>
 <div id="vcomments"></div>
+
+<script type="text/javascript">
+    let el = document.getElementsByClassName('leancloud_visitors');
+    if(el){
+        for(let i = 0; i < el.length; i++){
+            let id = el[i].getAttribute('id');
+            id = id.replace(".md", "/").toLowerCase()
+            el[i].setAttribute('id', id);
+        }
+    }
+</script>
 
 <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
