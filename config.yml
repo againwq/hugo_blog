@@ -125,7 +125,7 @@ params:
        # - name: KoFi
        #   url: "https://ko-fi.com/adityatelange"
         - name: email
-          url: "mailto:2750833015@qq.com"
+          url: "mailto:xuqianchao.me@qq.com"
         - name: Rss
           url: "index.xml"
     # tag 编辑文章

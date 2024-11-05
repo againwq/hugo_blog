@@ -11,3 +11,9 @@
     font-weight: 700;
     font-size: 18px;
 }
+
+.post-content img{
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
