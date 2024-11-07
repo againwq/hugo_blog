@@ -10,8 +10,8 @@
 {{ partial "mathjax.html" . }}
 <link rel="icon" href="/avatar.png">
 <!--tag custom js(assets) -->
-{{- $main := resources.Get "js/extended/main.js" | js.Build (dict "params" (dict "custom_param" site.Params.customJs_param)) | resources.Minify }}
-{{- $module := resources.Get "js/extended/module.js" }}
-{{- $custom := (slice $main $module) | resources.Concat "assets/js/extended/custom.js" }}
+{{- $main := resources.Get "js/extended/main.js"  }}
+{{- $params := resources.Get "js/extended/params.js" | js.Build (dict "params" (dict "custom_param" site.Params.customJs_param)) | resources.Minify}}
+{{- $custom := (slice $main $params) | resources.Concat "assets/js/extended/custom.js" }}
 <script defer crossorigin="anonymous" src="{{ $custom.RelPermalink }}"></script>
 {{- /* Head custom content area end */ -}}

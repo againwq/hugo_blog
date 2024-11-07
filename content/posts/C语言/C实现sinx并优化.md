@@ -164,9 +164,9 @@ int sinx_time_test(float (*fun_sin)(float)， float *data， int n， int count)
 
 &emsp;&emsp; 三种方法程序运行时间如下：
 
-| C standard  | Fixed degree | Fixed items |
-| --------------- | ----------------- | ---------------- |
-| 184 us          | 266 us            | 1701 us          |
+| C standard | Fixed degree | Fixed items |
+| ---------- | ------------ | ----------- |
+| 184 us     | 266 us       | 1701 us     |
 
 &emsp;&emsp; 多次运行数值上的结果可能不一样，但是三者的关系基本不变，标准库的 sinx 最快，其次是我们优化后的固定精度的实现，最后是固定周期的实现。我们可以看到优化后的固定精度的实现和 C 标准库执行时间差不多，只有**几十us**的差距，但是固定周期的实现方法运行的时间却是其他两种方法的 **10 倍**，可见其效率之低。</p>
 
