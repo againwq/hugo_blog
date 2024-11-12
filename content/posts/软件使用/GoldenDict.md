@@ -2,7 +2,7 @@
 title: "Debian12中GoldenDict词典软件的使用"
 date: 2024-11-05
 series: ["软件使用"]
-tags: ["linux","GoldenDict","日常办公"]
+tags: ["翻译","阅读工具"]
 ShowToc: true
 TocOpen: true
 description: GoldenDict的基本使用，提供词典资源和调用百度api翻译的方法
@@ -13,7 +13,7 @@ description: GoldenDict的基本使用，提供词典资源和调用百度api翻
 &emsp;&emsp; GoldenDict 是一款开源的词典软件，它具有高度的定制性，可以自定义软件界面，它支持导入词典数据、调用外部网站和自定义程序等功能，对于需要
 在学习中阅读英文文献时非常方便使用。在 Debian12 中可以直接通过 apt 命令下载该软件
 
-``` shell
+``` Shell
 sudo apt update
 sudo apt install goldendict
 ```

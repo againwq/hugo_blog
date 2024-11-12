@@ -1,5 +1,5 @@
 baseURL: "https://example.com" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-title: 徐乾朝的博客
+title: Xu Qianchao's Blog
 paginate: 5
 theme: PaperMod
 
@@ -26,11 +26,11 @@ languages:
           series: series
         homeInfoParams:
           enabled: true
-          Title: 徐乾朝的博客
+          Title: Xu Qianchao's Blog
           Content: "Building Site ..."
         aboutPage:
           enabled: true
-          title: 徐乾朝的博客
+          title: Xu Qianchao's Blog
           imageUrl: "images/avatar.png"  
           imageTitle: my image
           #subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
@@ -76,7 +76,7 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
     #author: Theme PaperMod
-    author: 徐乾朝 # multiple authors
+    author: xuqianchao # multiple authors
     hideAuthor: true
     # tag custom static
     #custom_js: ["js/custom.js"]
@@ -136,7 +136,7 @@ params:
     #    appendFilePath: true # to append file path to Edit link
 
     label:
-        text: "徐乾朝的博客"
+        text: "Xu Qianchao's Blog"
         icon: /images/avatar.png
         iconHeight: 35
 

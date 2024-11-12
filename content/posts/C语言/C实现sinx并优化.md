@@ -1,7 +1,7 @@
 ---
 title: "C语言使用泰勒展开实现sinx并优化"
 date: 2024-09-04
-series: ["Linux_C"]
+series: ["C语言"]
 tags: ["C语言", "泰勒展开", "浮点数","优化"]
 ShowToc: true
 TocOpen: true
