@@ -15,8 +15,8 @@ description: Libtranslate的本地部署，并采用CUDA加速
 
 ## 二. docker 与 nvidia docker 支持的前置条件
 
-&emsp;&emsp; 首先需要保证你的本地系统已经安装的 docker 环境，建议采用国内的源安装，比如清华源、阿里源等。同时建议配置docker镜像源防止由于网络问题无法拉取镜像。这里不提供安装配置命令，建议读者自行搜索相关资料。`</br>`
-&emsp;&emsp; 使用 nvidia 的 docker 加速，需要读者本地拥有 nvidia 的显卡，并安装了显卡驱动。如果没有 nvidia 的显卡支持，可以跳过这一部分，进行 cpu 版本的本地部署。`</br>`
+&emsp;&emsp; 首先需要保证你的本地系统已经安装的 docker 环境，建议采用国内的源安装，比如清华源、阿里源等。同时建议配置docker镜像源防止由于网络问题无法拉取镜像。这里不提供安装配置命令，建议读者自行搜索相关资料。</br>
+&emsp;&emsp; 使用 nvidia 的 docker 加速，需要读者本地拥有 nvidia 的显卡，并安装了显卡驱动。如果没有 nvidia 的显卡支持，可以跳过这一部分，进行 cpu 版本的本地部署。</br>
 &emsp;&emsp; 首先要在自己的电脑上安装 nvidia docker 支持，参考的[官方地址](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)。根据你的 linux 发行版复制粘贴命令就行了，debian 发行版的安装命令如下：
 
 ```Shell
@@ -112,10 +112,10 @@ ENTRYPOINT ["libretranslate", "--host", "0.0.0.0", "--load-only"，"zh,en"]
 
 ### 3. 启用 cuda 加速后进行翻译出现内部错误
 
-&emsp;&emsp; 建议先进入 docker 内部使用 python执行 `torch.cuda.is_available()` 查看 CUDA 是否成功支持。`</br>`
+&emsp;&emsp; 建议先进入 docker 内部使用 python执行 `torch.cuda.is_available()` 查看 CUDA 是否成功支持。</br>
 &emsp;&emsp; 这里我的问题是我的 **nvidia 驱动版本是 debian12 默认下载的535, CUDA 版本最高支持到 12.2**, 而且我本地的 CUDA 环境是 11.8。**Libretranslate默认构建镜像的 CUDA 版本是 12.4**, 版本过高导致 torch 调用硬件失败。解决的方法是将 Libretranslate 构建时采用的基础镜像从 `FROM nvidia/cuda:12.4.1-devel-ubuntu20.04` 更换为 `FROM nvidia/cuda:12.2.0-devel-ubuntu20.04`。 注意一定要是 12 版本以上的，我之前采用与本地相同的 11.8 启动仍然失败了，`torch.cuda.is_available()` 的返回值是 True，但是运行时会出现动态链接库找不到的问题，当前这个版本好像默认要求 CUDA 版本大于 12。
 
 ### 参考文献
 
-> [LibreTranslate的github](https://github.com/LibreTranslate/LibreTranslate) `</br>`
-> [翻译模型下载失败参考解决方案](https://community.libretranslate.com/t/failing-to-download-from-cloudflare-with-connectionrefusederror/960) `</br>`
+> [LibreTranslate的github](https://github.com/LibreTranslate/LibreTranslate) </br>
+> [翻译模型下载失败参考解决方案](https://community.libretranslate.com/t/failing-to-download-from-cloudflare-with-connectionrefusederror/960) </br>
