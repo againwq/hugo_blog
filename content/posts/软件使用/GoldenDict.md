@@ -81,11 +81,11 @@ def split_data(sentences， limit):
     if len(sentences) < EN_LIMIT:
         data = sentences
     else:
-        positon = EN_LIMIT
-        while sentences[positon] != ' ':
-            positon -= 1
-        data += sentences[:positon] + '\n'
-        data += split_data(sentences[positon + 1:]， limit)
+        position = EN_LIMIT
+        while sentences[position] != ' ':
+            position -= 1
+        data += sentences[:position] + '\n'
+        data += split_data(sentences[position + 1:]， limit)
     return data
 
 from_lang = 'en'
@@ -142,4 +142,3 @@ if __name__ == '__main__':
 
 &emsp;&emsp; 上面的代码没有像图片中一样提供实时获取额度的功能，这个功能和真实的额度有一些小偏差，而且存在一些小 bug ，因此就不放上来了。读者可以自行修改代码实现自定义功能。
 当然，百度翻译api网站的控制台可以查看每月的额度，只是不是实时的。
-

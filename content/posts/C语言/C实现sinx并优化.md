@@ -30,21 +30,21 @@ $$
 
 float fun_sin(float x)
 {
-	float res， term;
-	int i;
-	int factor;  // 阶乘
+    float res， term;
+    int i;
+    int factor;  // 阶乘
 
-	term = x;    // 每一项的结果
-	factor = 1;
-	res = term;
-	for (i = 1; fabs(term) > degree; i++)
-	{
-		factor *= (2 * i) * (2 * i + 1);
-		term = pow(-1, i) * pow(x, 2 * i + 1) / factor;
-		res += term;
-	}
+    term = x;    // 每一项的结果
+    factor = 1;
+    res = term;
+    for (i = 1; fabs(term) > degree; i++)
+    {
+        factor *= (2 * i) * (2 * i + 1);
+        term = pow(-1, i) * pow(x, 2 * i + 1) / factor;
+        res += term;
+    }
 
-	return res;
+    return res;
 }
 ```
 
@@ -62,19 +62,19 @@ float fun_sin(float x)
 
 float fun_sin(float x)
 {
-	float res， term;
-	int i;
-	unsigned long factor;
+    float res， term;
+    int i;
+    unsigned long factor;
 
-	factor = 1;
-	res = x;
-	for (i = 1; i < TIMES; i++)
-	{
-		factor *= (2 * i) * (2 * i + 1);
-		res += pow(-1, i) * pow(x, 2 * i + 1) / factor;
-	}
+    factor = 1;
+    res = x;
+    for (i = 1; i < TIMES; i++)
+    {
+        factor *= (2 * i) * (2 * i + 1);
+        res += pow(-1, i) * pow(x, 2 * i + 1) / factor;
+    }
 
-	return res;
+    return res;
 }
 ```
 
@@ -93,29 +93,29 @@ float fun_sin(float x)
 #include <math.h>
 
 #define pi 3.14159265
-#define degree 1e-2		 // ̩精度设置
+#define degree 1e-2         // ̩精度设置
 const float factor_diff_mem[10] = // 乘积因子的分母部分
 {
-	1.0， 1.0 / 6， 1.0 / 20， 1.0 / 42， 1.0 / 72，
-	1.0 / 110， 1.0 / 156， 1.0 / 210， 1.0 / 272， 1.0 / 342
+    1.0， 1.0 / 6， 1.0 / 20， 1.0 / 42， 1.0 / 72，
+    1.0 / 110， 1.0 / 156， 1.0 / 210， 1.0 / 272， 1.0 / 342
 };
 
 float fun_sin(float x)
 {
-	float sum;
-	float diff;
-	int i;
-	float term;
+    float sum;
+    float diff;
+    int i;
+    float term;
 
-	sum = x;
-	term = x;   // 展开的每一项
-	diff = -1 * x * x;  //乘积因子的分子部分
-	for (i = 1; fabs(term) > degree; i++)
-	{
-		term *= diff * factor_diff_mem[i];
-		sum += term;
-	}
-	return sum;
+    sum = x;
+    term = x;   // 展开的每一项
+    diff = -1 * x * x;  //乘积因子的分子部分
+    for (i = 1; fabs(term) > degree; i++)
+    {
+        term *= diff * factor_diff_mem[i];
+        sum += term;
+    }
+    return sum;
 }
 ```
 
@@ -129,36 +129,36 @@ float fun_sin(float x)
 
 ``` C
 int get_us_time(){
-	struct timeval tv;
-	gettimeofday(&tv， NULL);
-	return tv.tv_usec;
+    struct timeval tv;
+    gettimeofday(&tv， NULL);
+    return tv.tv_usec;
 }
 
 int sinx_time_test(float (*fun_sin)(float)， float *data， int n， int count)
 {
-	int start， end;
-	float x;
-	int i, j;
+    int start， end;
+    float x;
+    int i, j;
 
-	start = get_us_time();
+    start = get_us_time();
 
-	for (j = 0; j < count; j++)  // 周期数量
-	{
-		for (i = 0; i <= n; i++)
-		{
-			x = 2 * pi * i / n;    // 0-2pi取n个点
-			data[i] = fun_sin(x);
-			// printf("%f\n"， data[i]);
-		}
-	}
+    for (j = 0; j < count; j++)  // 周期数量
+    {
+        for (i = 0; i <= n; i++)
+        {
+            x = 2 * pi * i / n;    // 0-2pi取n个点
+            data[i] = fun_sin(x);
+            // printf("%f\n"， data[i]);
+        }
+    }
 
-	end = get_us_time();
+    end = get_us_time();
 
-	return end - start;
+    return end - start;
 }
 ```
 
-&emsp;&emsp; 这里采用两层循环是为了更方便看到差距以外，还要保证一个周期内不要取太多点，导致输入的x精度过高，这里我们不对精度做太高要求，</p>
+&emsp;&emsp; 这里采用两层循环是为了更方便看到差距以外，还要保证一个周期内不要取太多点，导致输入的x精度过高，这里我们不对精度做太高要求。
 
 ### 2.程序运行时间对比
 
@@ -168,7 +168,7 @@ int sinx_time_test(float (*fun_sin)(float)， float *data， int n， int count)
 | ---------- | ------------ | ----------- |
 | 184 us     | 266 us       | 1701 us     |
 
-&emsp;&emsp; 多次运行数值上的结果可能不一样，但是三者的关系基本不变，标准库的 sinx 最快，其次是我们优化后的固定精度的实现，最后是固定周期的实现。我们可以看到优化后的固定精度的实现和 C 标准库执行时间差不多，只有**几十us**的差距，但是固定周期的实现方法运行的时间却是其他两种方法的 **10 倍**，可见其效率之低。</p>
+&emsp;&emsp; 多次运行数值上的结果可能不一样，但是三者的关系基本不变，标准库的 sinx 最快，其次是我们优化后的固定精度的实现，最后是固定周期的实现。我们可以看到优化后的固定精度的实现和 C 标准库执行时间差不多，只有**几十us**的差距，但是固定周期的实现方法运行的时间却是其他两种方法的 **10 倍**，可见其效率之低。
 
 ### 3.程序运行精度对比
 
@@ -176,26 +176,26 @@ int sinx_time_test(float (*fun_sin)(float)， float *data， int n， int count)
 
 ![三种实现方法的sinx曲线](/images/sinx.png)
 
-&emsp;&emsp; 可以看到，**当x逐渐变大时，固定周期的方法的精度已经出现非常明显的误差了，而我们优化后的固定精度的方法几乎是与标准库的实现完全重叠，甚至我们可以尝试继续调小精度来提升程序运行速度**</p>
+&emsp;&emsp; 可以看到，**当x逐渐变大时，固定周期的方法的精度已经出现非常明显的误差了，而我们优化后的固定精度的方法几乎是与标准库的实现完全重叠，甚至我们可以尝试继续调小精度来提升程序运行速度**。
 
 ## 四、输入归一化处理
 
-&emsp;&emsp; 前面我们已经实现了速度接近标准库实现的泰勒展开，但是范围被限定在 $(-2\pi， 2\pi)$ 之间，其实我们也可以输入超过这个范围的数据，但是随着输入的绝对值的变大，为了保证相同的精度，泰勒展开项数会逐渐增多，程序运行速度会越来越慢，最后很有有可能导致精度再次溢出。**我们不希望不同的输入对程序的运行状态有太大的影响**。因此，我们需要对输入进行归一化处理</p>
+&emsp;&emsp; 前面我们已经实现了速度接近标准库实现的泰勒展开，但是范围被限定在 $(-2\pi， 2\pi)$ 之间，其实我们也可以输入超过这个范围的数据，但是随着输入的绝对值的变大，为了保证相同的精度，泰勒展开项数会逐渐增多，程序运行速度会越来越慢，最后很有有可能导致精度再次溢出。**我们不希望不同的输入对程序的运行状态有太大的影响**。因此，我们需要对输入进行归一化处理。
 
 ### 1.归一化操作
 
 &emsp;&emsp; 归一化操作其实很简单，借助 sinx 的周期性，在本程序中归一化操作如下
+
 ``` C
 const float T = 2 * pi;  // sinx周期为2pi
 
 float fun_sin(float x){
-	...
-	int n = (int)(x / T);  // 计算周期数量
-	x -= n * T;    // sin(x) = sinx(x - 2n*pi)
+    ...
+    int n = (int)(x / T);  // 计算周期数量
+    x -= n * T;    // sin(x) = sinx(x - 2n*pi)
     ...
 }
 ```
-</p>
 
 ### 2.对除法的优化
 
@@ -205,12 +205,13 @@ float fun_sin(float x){
 const float T = 2 * pi
 const float f = 1 / T // 编译阶段执行
 float fun_sin(float x){
-	...
-	x -= T * (int)(x * f)
+    ...
+    x -= T * (int)(x * f)
     ...
 }
 ```
-&emsp;&emsp;我们把涉及到除法的部分放到编译阶段执行，这样可以优化在某些不支持快速计算除法的平台上的运行速度</p>
+
+&emsp;&emsp;我们把涉及到除法的部分放到编译阶段执行，这样可以优化在某些不支持快速计算除法的平台上的运行速度。
 
 ### 3.对浮点数截断的操作
 
@@ -220,23 +221,24 @@ float fun_sin(float x){
 ``` C
 union FloatBit
 {
-	float f;
-	int f_b;
+    float f;
+    int f_b;
 } ret， bias;
 
 int Float2Int(float f) // 快速转换浮点数为整数
 {
-	ret.f = f;
-	bias.f_b = (23l + 127l) << 23;
-	if (f < 0.0f)
-	{
-		bias.f_b = ((23l + 127l) << 23) + (1l << 22);
-	}
-	ret.f += bias.f;
-	ret.f_b -= bias.f_b;
-	return ret.f_b;
+    ret.f = f;
+    bias.f_b = (23l + 127l) << 23;
+    if (f < 0.0f)
+    {
+        bias.f_b = ((23l + 127l) << 23) + (1l << 22);
+    }
+    ret.f += bias.f;
+    ret.f_b -= bias.f_b;
+    return ret.f_b;
 }
 ```
+
 &emsp;&emsp;需要注意你的平台上 int 位数应该和 float 一样都是 32 位，如果int是 16 位应该换成 long 或者其他 32 位的整型类型。
 
 ## 五、最终程序实现
@@ -247,50 +249,50 @@ int Float2Int(float f) // 快速转换浮点数为整数
 #include <math.h>
 
 #define pi 3.14159265
-#define degree 1e-2				  // ̩精度设置
+#define degree 1e-2                  // ̩精度设置
 const float factor_diff_mem[10] = // 泰勒展开因子
-	{
-		1.0, 1.0 / 6, 1.0 / 20, 1.0 / 42, 1.0 / 72,
-		1.0 / 110, 1.0 / 156, 1.0 / 210, 1.0 / 272, 1.0 / 342};
+    {
+        1.0, 1.0 / 6, 1.0 / 20, 1.0 / 42, 1.0 / 72,
+        1.0 / 110, 1.0 / 156, 1.0 / 210, 1.0 / 272, 1.0 / 342};
 const float T = 2 * pi;
 const float f = 1 / (2 * pi);
 
 union FloatBit
 {
-	float f;
-	int f_b;
+    float f;
+    int f_b;
 } ret, bias;
 
 int Float2Int(float f) // 快速转换浮点数为整数
 {
-	ret.f = f;
-	bias.f_b = (23l + 127l) << 23;
-	if (f < 0.0f)
-	{
-		bias.f_b = ((23l + 127l) << 23) + (1l << 22);
-	}
-	ret.f += bias.f;
-	ret.f_b -= bias.f_b;
-	return ret.f_b;
+    ret.f = f;
+    bias.f_b = (23l + 127l) << 23;
+    if (f < 0.0f)
+    {
+        bias.f_b = ((23l + 127l) << 23) + (1l << 22);
+    }
+    ret.f += bias.f;
+    ret.f_b -= bias.f_b;
+    return ret.f_b;
 }
 
 float fun_sin(float x)
 {
-	float sum;
-	float diff;
-	int i;
-	float term;
-	x -= T * Float2Int(x * f);
+    float sum;
+    float diff;
+    int i;
+    float term;
+    x -= T * Float2Int(x * f);
 
-	sum = x;
-	term = x;
-	diff = -1 * x * x;
-	for (i = 1; fabs(term) > degree; i++)
-	{
-		term *= diff * factor_diff_mem[i];
-		sum += term;
-	}
-	return sum;
+    sum = x;
+    term = x;
+    diff = -1 * x * x;
+    for (i = 1; fabs(term) > degree; i++)
+    {
+        term *= diff * factor_diff_mem[i];
+        sum += term;
+    }
+    return sum;
 }
 ```
 
@@ -299,7 +301,3 @@ float fun_sin(float x)
 ![两种方法在不同输入范围的性能对比](/images/两种方法在不同输入范围的性能对比.png)
 
 &emsp;&emsp;可以看到，两种方法在**运行时间和稳定性**上差距很小，我们的程序达到了我们预期的性能了
-
-
-
-
