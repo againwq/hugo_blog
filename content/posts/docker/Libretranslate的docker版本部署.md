@@ -2,7 +2,7 @@
 title: "本地docker部署libretranslate翻译模型并采用CUDA加速"
 date: 2024-11-12
 series: ["软件使用"]
-tags: ["AI", "翻译", "阅读工具", "docker部署"]
+tags: ["AI", "翻译", "阅读工具", "docker"]
 ShowToc: true
 TocOpen: true
 description: Libtranslate的本地部署，并采用CUDA加速
