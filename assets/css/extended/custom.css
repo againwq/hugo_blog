@@ -16,4 +16,11 @@
     max-width: 80%;
     height: auto;
     margin: 0 auto;
+    
+}
+
+/* 文本两端对齐 */
+.post-content p{
+    text-align:justify; 
+    text-justify:inter-ideograph;
 }
